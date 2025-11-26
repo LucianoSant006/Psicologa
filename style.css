@@ -1,6 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap");
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap');
 
+/* =========================================
+   1. RESET & VARIÁVEIS GERAIS
+   ========================================= */
 * {
     margin: 0;
     padding: 0;
@@ -9,7 +12,6 @@
 }
 
 :root {
-    /* --- Nova Paleta: Bege, Creme & Marsala --- */
     --accent: #A65C65; 
     --accent-secondary: #C57D85;
     --accent-light: #F2E6E7; 
@@ -27,10 +29,11 @@ html {
 body {
     background-color: var(--bg-hero);
     color: var(--black);
+    overflow-x: hidden; /* Evita rolagem lateral indesejada no mobile */
 }
 
 /* =========================================
-   NOVO HEADER (Estilo Minimalista/Elegante)
+   2. HEADER & NAVEGAÇÃO (DESKTOP)
    ========================================= */
 nav {
     z-index: 999;
@@ -39,9 +42,9 @@ nav {
     left: 0;
     width: 100%;
     padding: 15px 0;
-    background-color: rgba(249, 244, 239, 0.98); /* Bege quase sólido */
+    background-color: rgba(249, 244, 239, 0.98);
     backdrop-filter: blur(10px);
-    box-shadow: 0 1px 0px rgba(0,0,0,0.05); /* Linha sutil embaixo */
+    box-shadow: 0 1px 0px rgba(0,0,0,0.05);
     transition: all 0.3s ease;
 }
 
@@ -54,7 +57,6 @@ nav {
     align-items: center;
 }
 
-/* Logo Assinatura */
 .brand-signature {
     font-family: 'Dancing Script', cursive;
     font-size: 2rem;
@@ -74,7 +76,6 @@ nav {
     margin-left: 5px;
 }
 
-/* Menu Links */
 .menu {
     display: flex;
     gap: 40px;
@@ -92,11 +93,22 @@ nav {
     transition: color 0.3s;
 }
 
-.menu a:hover {
+.menu a:hover,
+.menu a.active-link {
     color: var(--accent);
 }
 
-/* Botão Agendar Header */
+/* Linha animada embaixo do link ativo */
+.menu a.active-link::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--accent);
+}
+
 .btn-agendar {
     padding: 10px 25px;
     border: 1px solid var(--accent);
@@ -116,17 +128,17 @@ nav {
     box-shadow: 0 5px 15px rgba(166, 92, 101, 0.3);
 }
 
-/* Elementos Mobile (Escondidos no Desktop) */
-.mobile-cta {
-    display: none; 
-}
-
-.btn, .menu-btn, .close-btn {
+/* Elementos exclusivos do Mobile (Escondidos no Desktop) */
+.mobile-cta, 
+.btn, 
+.menu-btn, 
+.close-btn {
     display: none;
-    cursor: pointer;
 }
 
-/* --- Hero Section --- */
+/* =========================================
+   3. HERO SECTION
+   ========================================= */
 .heropage {
     padding-top: 140px;
     padding-bottom: 80px;
@@ -159,7 +171,8 @@ nav {
 }
 
 .hero-headlines h1 {
-    font-size: 3.2rem;
+    /* Tipografia fluida: ajusta entre 2.2rem e 3.2rem conforme a tela */
+    font-size: clamp(2.2rem, 4vw, 3.2rem);
     line-height: 1.1;
     margin-bottom: 20px;
     color: var(--black);
@@ -214,7 +227,9 @@ nav {
     object-fit: cover;
 }
 
-/* --- Seção Mindfulness (Modo Automático) --- */
+/* =========================================
+   4. MINDFULNESS (MODO AUTOMÁTICO)
+   ========================================= */
 .mindfulness-section {
     width: 100%;
     min-height: 600px;
@@ -354,7 +369,9 @@ nav {
     background-color: var(--accent-secondary);
 }
 
-/* --- Sobre Mim --- */
+/* =========================================
+   5. SEÇÃO SOBRE
+   ========================================= */
 .sobre {
     padding: 100px 5%;
     display: flex;
@@ -425,7 +442,9 @@ nav {
     text-decoration: underline;
 }
 
-/* --- Especialidades (Grid) --- */
+/* =========================================
+   6. SERVIÇOS (FLIP CARDS)
+   ========================================= */
 .pets {
     padding: 100px 5%;
     background-color: var(--bg-hero);
@@ -442,14 +461,6 @@ nav {
     color: var(--accent);
 }
 
-.pets-headlines p {
-    color: var(--text-gray);
-    margin-bottom: 20px;
-}
-
-/* =========================================
-   FLIP CARDS (Efeito de Rotação 3D)
-   ========================================= */
 .pets-collection {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -457,33 +468,34 @@ nav {
     margin-top: 60px;
 }
 
-/* O Container do Card */
 .flip-card {
     background-color: transparent;
     width: 100%;
-    height: 320px; /* Altura fixa necessária para o 3D */
-    perspective: 1000px; /* Dá a profundidade 3D */
+    height: 320px;
+    perspective: 1000px;
     cursor: pointer;
 }
 
-/* O Container Interno (que gira) */
 .flip-card-inner {
     position: relative;
     width: 100%;
     height: 100%;
     text-align: center;
-    transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Efeito suave */
+    transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     transform-style: preserve-3d;
     box-shadow: 0 10px 30px rgba(0,0,0,0.05);
     border-radius: 15px;
 }
 
-/* Ao passar o mouse no container principal, gira o interno */
 .flip-card:hover .flip-card-inner {
     transform: rotateY(180deg);
 }
 
-/* Estilos Comuns Frente e Verso */
+/* Classe JS para virar no clique (Mobile) */
+.flip-card-inner.flipped-mobile {
+    transform: rotateY(180deg);
+}
+
 .flip-card-front, .flip-card-back {
     position: absolute;
     width: 100%;
@@ -498,7 +510,6 @@ nav {
     padding: 30px;
 }
 
-/* --- FRENTE (Estilo Clean) --- */
 .flip-card-front {
     background-color: white;
     color: var(--black);
@@ -507,7 +518,7 @@ nav {
 
 .icon-front {
     font-size: 3.5rem;
-    color: var(--accent-secondary); /* Rosa antigo */
+    color: var(--accent-secondary);
     margin-bottom: 25px;
 }
 
@@ -520,17 +531,16 @@ nav {
 .see-more {
     font-size: 0.8rem;
     color: var(--text-gray);
-    margin-top: auto; /* Empurra para baixo */
+    margin-top: auto;
     text-transform: uppercase;
     letter-spacing: 1px;
     opacity: 0.7;
 }
 
-/* --- VERSO (Estilo Destaque) --- */
 .flip-card-back {
-    background-color: var(--accent); /* Cor Marsala */
+    background-color: var(--accent);
     color: white;
-    transform: rotateY(180deg); /* Já começa virado */
+    transform: rotateY(180deg);
     box-shadow: 0 15px 35px rgba(166, 92, 101, 0.4);
 }
 
@@ -565,7 +575,9 @@ nav {
     background-color: var(--bg-hero);
 }
 
-/* --- Locais / Processo --- */
+/* =========================================
+   7. LOCAIS & DEPOIMENTOS
+   ========================================= */
 .rifas-container {
     display: flex;
     justify-content: center;
@@ -591,7 +603,6 @@ nav {
     margin-bottom: 15px;
 }
 
-/* --- Depoimentos --- */
 .testimunhas {
     padding: 100px 5%;
     text-align: center;
@@ -648,7 +659,7 @@ nav {
 }
 
 /* =========================================
-   SEÇÃO: O QUE A TERAPIA NÃO É
+   8. TERAPIA NÃO É (MAPA MENTAL)
    ========================================= */
 .terapia-nao-e {
     background-color: #F9F6F2;
@@ -658,8 +669,7 @@ nav {
 }
 
 .title-nao-e {
-    font-family: "Nunito Sans", sans-serif;
-    font-size: 2.5rem;
+    font-size: clamp(2rem, 3.5vw, 2.5rem);
     color: #8D6E63;
     line-height: 1.1;
     margin-bottom: 50px;
@@ -713,10 +723,6 @@ nav {
     font-size: 1rem;
 }
 
-.map-item p {
-    margin-bottom: 5px;
-}
-
 .item-top-left { top: 10%; left: 10%; }
 .item-top-center { top: 5%; left: 50%; transform: translateX(-50%); }
 .item-top-right { top: 10%; right: 10%; }
@@ -743,39 +749,12 @@ nav {
     transform: rotate(180deg);
 }
 
-@media (max-width: 768px) {
-    .mind-map-container {
-        height: auto;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 20px;
-    }
-    .map-item, .center-brain {
-        position: static;
-        transform: none;
-    }
-    .arrow-svg, .arrow-char { display: none; }
-    .center-brain { order: -1; margin-bottom: 30px; }
-}
-
 /* =========================================
-   PÁGINA SOBRE
+   9. PÁGINA SOBRE (ESTILOS ESPECÍFICOS)
    ========================================= */
 .page-sobre {
     background-color: #FCF3F3;
 }
-
-.nav-sobre {
-    background-color: #9A4E56;
-    padding: 15px 5%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.brand-white h1, .brand-white .crp { color: white; text-decoration: none; }
-.btn-voltar { color: white; text-decoration: none; border: 1px solid #fff; padding: 5px 15px; border-radius: 20px; }
 
 .sobre-header {
     background: linear-gradient(135deg, #C06C75 0%, #9A4E56 100%);
@@ -789,17 +768,6 @@ nav {
     position: relative;
 }
 
-.sobre-header::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 50px;
-    background: #FFF;
-    border-radius: 50% 50% 0 0 / 30px 30px 0 0;
-}
-
 .sobre-header-content {
     flex: 1;
     max-width: 500px;
@@ -807,7 +775,7 @@ nav {
 
 .marsala-title {
     font-family: "Didot", serif;
-    font-size: 4.5rem;
+    font-size: clamp(3rem, 6vw, 4.5rem);
     font-weight: 700;
     line-height: 0.9;
     margin: 10px 0 30px;
@@ -820,11 +788,6 @@ nav {
     font-style: italic;
     font-size: 1.1rem;
     line-height: 1.6;
-}
-
-.gratidao-text {
-    font-size: 0.95rem;
-    opacity: 0.9;
 }
 
 .sobre-header-img {
@@ -854,16 +817,6 @@ nav {
     background-color: #FFF;
 }
 
-.academic-intro {
-    text-align: center;
-    margin-bottom: 60px;
-}
-
-.academic-intro h2 {
-    color: #9A4E56;
-    font-size: 2.5rem;
-}
-
 .timeline {
     position: relative;
     border-left: 2px solid #E0C0C4;
@@ -888,48 +841,6 @@ nav {
     box-shadow: 0 0 0 2px #E0C0C4;
 }
 
-.timeline-content .year {
-    display: inline-block;
-    background-color: #F4E1E4;
-    color: #9A4E56;
-    font-weight: 800;
-    padding: 2px 10px;
-    border-radius: 4px;
-    font-size: 0.85rem;
-    margin-bottom: 8px;
-}
-
-.timeline-content h3 {
-    font-size: 1.4rem;
-    color: #2C3E50;
-    margin-bottom: 2px;
-}
-
-.timeline-content h4 {
-    font-size: 1rem;
-    color: #9A4E56;
-    margin-bottom: 10px;
-    font-weight: 600;
-}
-
-.timeline-content p {
-    color: #546E7A;
-    line-height: 1.5;
-    font-size: 0.95rem;
-    margin-bottom: 10px;
-}
-
-.timeline-content .tag {
-    font-size: 0.8rem;
-    font-weight: 700;
-    color: #546E7A;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    border: 1px solid #CFD8DC;
-    padding: 2px 8px;
-    border-radius: 4px;
-}
-
 .footer-sobre {
     background-color: #9A4E56;
     color: white;
@@ -937,30 +848,9 @@ nav {
     padding: 20px;
 }
 
-@media (max-width: 768px) {
-    .sobre-header {
-        flex-direction: column;
-        text-align: center;
-        padding-top: 100px;
-    }
-    
-    .quote-box {
-        border-left: none;
-        border-top: 3px solid rgba(255,255,255,0.4);
-        padding-top: 20px;
-        padding-left: 0;
-    }
-
-    .img-frame {
-        transform: rotate(0);
-    }
-
-    .marsala-title {
-        font-size: 3.5rem;
-    }
-}
-
-/* --- Footer --- */
+/* =========================================
+   10. FOOTER
+   ========================================= */
 footer {
     background-color: var(--black);
     color: white;
@@ -984,34 +874,20 @@ footer {
     color: #D2838C;
 }
 
-.social a {
+.social a, .links a {
     color: white;
-    font-size: 1.5rem;
-    margin-right: 15px;
     transition: color 0.3s;
 }
 
-.social a:hover {
-    color: #D2838C;
-}
+.social a { font-size: 1.5rem; margin-right: 15px; }
+.links a { display: block; color: #E0C0C4; text-decoration: none; margin-bottom: 10px; }
+.links a:hover, .social a:hover { color: #D2838C; }
 
 .contato-info-item {
     display: flex;
     gap: 10px;
     margin-bottom: 10px;
     color: #E0C0C4;
-}
-
-.links a {
-    display: block;
-    color: #E0C0C4;
-    text-decoration: none;
-    margin-bottom: 10px;
-    transition: color 0.3s;
-}
-
-.links a:hover {
-    color: white;
 }
 
 .copyright {
@@ -1021,7 +897,7 @@ footer {
     font-size: 0.9rem;
 }
 
-/* --- Floating WhatsApp --- */
+/* Floating WhatsApp */
 .floating-whatsapp {
     position: fixed;
     bottom: 30px;
@@ -1045,146 +921,47 @@ footer {
     transform: scale(1.1);
 }
 
-/* --- Responsividade Mobile (Geral & Menu Drawer) --- */
+/* =========================================
+   11. RESPONSIVIDADE MOBILE (UNIFICADA)
+   ========================================= */
 @media (max-width: 768px) {
-    .heropage {
+    /* --- Ajustes Gerais de Layout --- */
+    .heropage, .sobre, .sobre-header {
         flex-direction: column;
         text-align: center;
-        padding-top: 120px;
+        padding-top: 110px;
+    }
+    
+    .hero-content, .img-sobre, .sobre-header-content {
+        width: 100%;
     }
     
     .hero-headlines-buttons {
         justify-content: center;
     }
-
-    .hero-headlines h1 {
-        font-size: 2.2rem;
-    }
-
-    .sobre {
-        flex-direction: column;
-    }
     
     .img-sobre {
-        width: 100%;
+        width: 80%;
+        max-width: 300px;
+        margin: 0 auto;
     }
 
-    /* Menu Estilo Gaveta */
-    .menu {
-        display: none; /* Esconde o flex normal */
-        position: fixed;
-        top: 0;
-        right: 0;
-        height: 100vh;
-        width: 70%;
-        background: var(--bg-hero);
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        gap: 30px;
-        padding: 80px 30px;
-        box-shadow: -5px 0 15px rgba(0,0,0,0.1);
-        z-index: 1000;
-    }
-
-    .menu.active {
-        display: flex;
-    }
-
-    .btn-agendar {
-        display: none; /* Esconde botão desktop */
-    }
-
-    /* Botões de controle do menu */
-    .btn, .close-btn {
-        display: block;
-        font-size: 1.5rem;
-        color: var(--accent);
-    }
-    
-    .menu-btn {
-        display: block;
-        color: var(--accent);
-        font-size: 1.5rem;
-    }
-
-    .mobile-cta {
-        display: inline-block;
-        margin-top: 20px;
-        padding: 12px 30px;
-        background: var(--accent);
-        color: white !important;
-        border-radius: 30px;
-    }
-}
-/* --- Melhoria na Tipografia Responsiva --- */
-.hero-headlines h1 {
-    /* O clamp ajusta o tamanho automaticamente: min 2.2rem, ideal 4vw, max 3.2rem */
-    font-size: clamp(2.2rem, 4vw, 3.2rem); 
-    line-height: 1.1;
-    margin-bottom: 20px;
-    color: var(--black);
-}
-
-.title-nao-e {
-    font-size: clamp(2rem, 3.5vw, 2.5rem);
-}
-
-.marsala-title {
-    font-size: clamp(3rem, 6vw, 4.5rem);
-}
-
-/* --- Menu Desktop Link Ativo --- */
-.menu a.active-link {
-    color: var(--accent);
-}
-.menu a.active-link::after {
-    content: '';
-    position: absolute;
-    bottom: -5px;
-    left: 0;
-    width: 100%;
-    height: 2px;
-    background-color: var(--accent);
-}
-
-/* --- Ajuste Flip Card para Mobile (Classe via JS) --- */
-.flip-card-inner.flipped-mobile {
-    transform: rotateY(180deg);
-}
-
-/* =========================================
-   RESPONSIVIDADE MOBILE (Menu Gaveta Melhorado)
-   ========================================= */
-@media (max-width: 768px) {
-    /* Ajustes Gerais */
-    .heropage {
-        padding-top: 110px; /* Menos espaço no topo */
-        padding-bottom: 40px;
-        flex-direction: column;
-        text-align: center;
-    }
-    
-    .hero-content {
-        width: 100%;
-    }
-
-    /* Menu Estilo Gaveta */
+    /* --- MENU GAVETA (DRAWER) --- */
     .menu {
         display: none; 
         position: fixed;
         top: 0;
         right: 0;
         height: 100vh;
-        width: 80%; /* Um pouco mais largo para conforto */
+        width: 80%; 
         max-width: 350px;
-        background: rgba(249, 244, 239, 0.98); /* Fundo com leve transparência */
+        background: rgba(249, 244, 239, 0.98);
         backdrop-filter: blur(15px);
         flex-direction: column;
-        justify-content: flex-start; /* Alinha itens do topo */
+        justify-content: flex-start;
         align-items: center;
         gap: 30px;
-        padding-top: 100px; /* Espaço para o botão fechar */
+        padding-top: 100px;
         box-shadow: -5px 0 20px rgba(0,0,0,0.1);
         z-index: 1000;
         transition: transform 0.3s ease;
@@ -1200,28 +977,32 @@ footer {
         to { transform: translateX(0); }
     }
 
-    /* Botão Fechar (X) - Posicionamento Absoluto */
-    .menu .btn {
-        display: block;
-        position: absolute;
-        top: 25px;
-        right: 25px;
-        font-size: 2rem;
-        color: var(--accent);
-        cursor: pointer;
-        z-index: 1001;
-    }
-
-    /* Links do Menu Mobile */
     .menu a {
         font-size: 1.2rem;
         width: 100%;
         text-align: center;
         padding: 10px 0;
-        border-bottom: 1px solid rgba(0,0,0,0.05); /* Separador sutil */
+        border-bottom: 1px solid rgba(0,0,0,0.05);
     }
 
-    /* Botão Mobile CTA (Agendar) dentro do menu */
+    /* Botão de Fechar e Hambúrguer */
+    .btn { display: block; cursor: pointer; color: var(--accent); }
+    
+    .menu .btn { /* Botão X dentro do menu */
+        position: absolute;
+        top: 25px;
+        right: 25px;
+        font-size: 2rem;
+    }
+
+    .nav-cta .btn { /* Hambúrguer no Header */
+        font-size: 1.6rem;
+        margin-left: 15px;
+    }
+
+    /* Botões CTA */
+    .btn-agendar { display: none; } /* Esconde do header desktop */
+    
     .mobile-cta {
         display: inline-block;
         margin-top: 20px;
@@ -1232,36 +1013,8 @@ footer {
         font-weight: 700;
         box-shadow: 0 4px 15px rgba(166, 92, 101, 0.4);
     }
-    
-    /* Esconder botão desktop */
-    .btn-agendar {
-        display: none;
-    }
 
-    /* Hambúrguer */
-    .nav-cta .btn {
-        display: block;
-        font-size: 1.6rem;
-        color: var(--accent);
-        cursor: pointer;
-        margin-left: 15px;
-    }
-    
-    /* Ajustes Seções */
-    .sobre, .pets, .terapia-nao-e, .testimunhas {
-        padding: 60px 5%; /* Menos padding vertical */
-    }
-
-    .sobre {
-        flex-direction: column;
-    }
-    
-    .img-sobre {
-        width: 80%; /* Imagem um pouco menor no mobile */
-        max-width: 300px;
-    }
-    
-    /* Mapa Mental Mobile */
+    /* --- Mapa Mental Mobile --- */
     .mind-map-container {
         height: auto;
         display: flex;
@@ -1275,11 +1028,17 @@ footer {
         transform: none;
     }
     
-    /* Setas SVG escondidas no mobile para limpar visual */
     .arrow-svg, .arrow-char { display: none; }
     
-    .center-brain {
-        order: -1; /* Cérebro vem primeiro */
-        margin-bottom: 20px;
+    .center-brain { order: -1; margin-bottom: 20px; }
+
+    /* --- Página Sobre Mobile --- */
+    .quote-box {
+        border-left: none;
+        border-top: 3px solid rgba(255,255,255,0.4);
+        padding-top: 20px;
+        padding-left: 0;
     }
+
+    .img-frame { transform: rotate(0); }
 }
