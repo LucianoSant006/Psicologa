@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap");
-@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap'); /* Adicionei a fonte cursiva mencionada */
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap');
 
 * {
     margin: 0;
@@ -10,26 +10,12 @@
 
 :root {
     /* --- Nova Paleta: Bege, Creme & Marsala --- */
-    
-    /* Cor Principal (Botões, Títulos Fortes) - Marsala/Vinho Suave */
     --accent: #A65C65; 
-    
-    /* Cor Secundária (Detalhes) - Rosa Antigo/Terracota */
     --accent-secondary: #C57D85;
-
-    /* Fundo de destaque (Badges, Cards) - Bege Rosado Claro */
     --accent-light: #F2E6E7; 
-    
-    /* Texto Escuro - Marrom Café (substitui o preto/azul) */
     --black: #4A3B3B; 
-    
-    /* Texto Cinza - Marrom Acinzentado Quente */
     --text-gray: #8D6E63;
-    
-    /* Branco Puro */
     --white: #ffffff;
-    
-    /* Fundo Hero e Seções - O Bege/Creme principal */
     --bg-hero: #F9F4EF; 
 }
 
@@ -39,56 +25,69 @@ html {
 }
 
 body {
-    background-color: var(--bg-hero); /* Mudado de white para o bege base */
+    background-color: var(--bg-hero);
     color: var(--black);
 }
 
-/* --- Navbar --- */
+/* =========================================
+   NOVO HEADER (Estilo Minimalista/Elegante)
+   ========================================= */
 nav {
     z-index: 999;
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: rgba(249, 244, 239, 0.95); /* Bege translúcido */
-    padding: 20px 5%;
+    padding: 15px 0;
+    background-color: rgba(249, 244, 239, 0.98); /* Bege quase sólido */
     backdrop-filter: blur(10px);
-    box-shadow: 0 2px 15px rgba(74, 59, 59, 0.05); /* Sombra marrom suave */
+    box-shadow: 0 1px 0px rgba(0,0,0,0.05); /* Linha sutil embaixo */
     transition: all 0.3s ease;
 }
 
-.brand {
+.nav-container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Logo Assinatura */
+.brand-signature {
+    font-family: 'Dancing Script', cursive;
+    font-size: 2rem;
+    color: var(--accent);
     text-decoration: none;
     display: flex;
     flex-direction: column;
+    line-height: 1;
 }
 
-.brand h1 {
-    font-size: 1.4rem;
-    font-weight: 800;
-    color: var(--accent);
-    letter-spacing: -0.5px;
-}
-
-.brand .crp {
-    font-size: 0.8rem;
+.crp-mini {
+    font-family: "Nunito Sans", sans-serif;
+    font-size: 0.7rem;
     color: var(--text-gray);
-    font-weight: 600;
+    letter-spacing: 2px;
+    margin-top: 5px;
+    margin-left: 5px;
 }
 
+/* Menu Links */
 .menu {
     display: flex;
-    gap: 30px;
+    gap: 40px;
 }
 
 .menu a {
     text-decoration: none;
+    font-family: "Nunito Sans", sans-serif;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
     color: var(--black);
     font-weight: 600;
-    font-size: 1rem;
     position: relative;
     transition: color 0.3s;
 }
@@ -97,53 +96,34 @@ nav {
     color: var(--accent);
 }
 
-/* Botões */
+/* Botão Agendar Header */
+.btn-agendar {
+    padding: 10px 25px;
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    border-radius: 50px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 700;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.btn-agendar:hover {
+    background-color: var(--accent);
+    color: white;
+    box-shadow: 0 5px 15px rgba(166, 92, 101, 0.3);
+}
+
+/* Elementos Mobile (Escondidos no Desktop) */
+.mobile-cta {
+    display: none; 
+}
+
 .btn, .menu-btn, .close-btn {
     display: none;
     cursor: pointer;
-    font-size: 1.5rem;
-    color: var(--black);
-}
-
-.btn-2 {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 10px 24px;
-    background-color: var(--accent);
-    color: white;
-    border: none;
-    border-radius: 50px;
-    font-weight: 700;
-    cursor: pointer;
-    transition: transform 0.2s, background 0.2s;
-}
-
-.btn-2:hover {
-    transform: scale(1.05);
-    background-color: var(--accent-secondary);
-}
-
-.btn-3 {
-    padding: 14px 32px;
-    background-color: var(--black);
-    color: white;
-    border: 2px solid var(--black);
-    border-radius: 8px;
-    font-weight: 700;
-    cursor: pointer;
-    transition: all 0.3s;
-}
-
-.btn-3:hover {
-    background-color: var(--accent);
-    border-color: var(--accent);
-    color: white;
-}
-
-.btn-transparent {
-    background-color: transparent;
-    color: var(--black);
 }
 
 /* --- Hero Section --- */
@@ -197,6 +177,28 @@ nav {
     gap: 15px;
 }
 
+.btn-3 {
+    padding: 14px 32px;
+    background-color: var(--black);
+    color: white;
+    border: 2px solid var(--black);
+    border-radius: 8px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.btn-3:hover {
+    background-color: var(--accent);
+    border-color: var(--accent);
+    color: white;
+}
+
+.btn-transparent {
+    background-color: transparent;
+    color: var(--black);
+}
+
 .hero-image-container {
     flex: 1;
     display: flex;
@@ -208,8 +210,148 @@ nav {
     width: 100%;
     max-width: 450px;
     border-radius: 20px;
-    box-shadow: 20px 20px 0px var(--accent-light); /* Sombra rosada */
+    box-shadow: 20px 20px 0px var(--accent-light);
     object-fit: cover;
+}
+
+/* --- Seção Mindfulness (Modo Automático) --- */
+.mindfulness-section {
+    width: 100%;
+    min-height: 600px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: linear-gradient(135deg, #F9F4EF 0%, #FFFFFF 100%);
+    transition: background 0.8s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.mindfulness-section.calm-mode {
+    background: #E6D0D4; 
+}
+
+.mindfulness-content {
+    max-width: 600px;
+    padding: 20px;
+    z-index: 2;
+}
+
+.mind-title {
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: var(--black);
+    margin-bottom: 10px;
+    transition: color 0.5s;
+}
+
+.mind-subtitle {
+    font-size: 1.2rem;
+    color: var(--text-gray);
+    margin-bottom: 40px;
+}
+
+.switch-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin: 0 auto 30px;
+}
+
+.toggle-switch {
+    width: 120px;
+    height: 180px;
+    background-color: #fff;
+    border: 4px solid var(--black);
+    border-radius: 10px;
+    position: relative;
+    cursor: pointer;
+    box-shadow: 10px 10px 0px rgba(74, 59, 59, 0.1);
+    transition: all 0.3s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.toggle-switch:active {
+    transform: scale(0.98);
+}
+
+.switch-lever {
+    width: 60px;
+    height: 100px;
+    background-color: #fff;
+    border: 4px solid var(--black);
+    position: relative;
+    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+    top: -20px; 
+    box-shadow: 0 5px 0 #eee;
+}
+
+.toggle-switch.switched-off .switch-lever {
+    top: 20px; 
+    background-color: #D2838C;
+    box-shadow: 0 -5px 0 #A65C65;
+}
+
+.switch-labels {
+    font-weight: 800;
+    font-size: 1.2rem;
+    color: var(--black);
+    letter-spacing: 2px;
+}
+
+#switch-status-text {
+    font-size: 1.5rem;
+    font-weight: 800;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--accent);
+}
+
+.hidden-message {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.6s ease;
+    pointer-events: none;
+    background: rgba(255, 255, 255, 0.7);
+    padding: 20px;
+    border-radius: 15px;
+    backdrop-filter: blur(5px);
+}
+
+.hidden-message.visible {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: all;
+}
+
+.hidden-message p {
+    font-size: 1.3rem;
+    color: var(--accent);
+    font-weight: 600;
+    margin-bottom: 10px;
+    line-height: 1.6;
+}
+
+.btn-mindfulness {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 12px 30px;
+    background-color: var(--accent);
+    color: white;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: bold;
+    transition: transform 0.2s;
+}
+
+.btn-mindfulness:hover {
+    transform: scale(1.05);
+    background-color: var(--accent-secondary);
 }
 
 /* --- Sobre Mim --- */
@@ -268,6 +410,21 @@ nav {
     font-size: 0.9rem;
 }
 
+.insta-link {
+    display: inline-block;
+    margin-top: 20px;
+    font-weight: 700;
+    color: var(--accent);
+    text-decoration: none;
+    font-size: 1.1rem;
+    transition: opacity 0.3s;
+}
+
+.insta-link:hover {
+    opacity: 0.8;
+    text-decoration: underline;
+}
+
 /* --- Especialidades (Grid) --- */
 .pets {
     padding: 100px 5%;
@@ -285,54 +442,127 @@ nav {
     color: var(--accent);
 }
 
+.pets-headlines p {
+    color: var(--text-gray);
+    margin-bottom: 20px;
+}
+
+/* =========================================
+   FLIP CARDS (Efeito de Rotação 3D)
+   ========================================= */
 .pets-collection {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     gap: 30px;
-    margin-top: 50px;
+    margin-top: 60px;
 }
 
-.pet-item {
-    background: white;
+/* O Container do Card */
+.flip-card {
+    background-color: transparent;
+    width: 100%;
+    height: 320px; /* Altura fixa necessária para o 3D */
+    perspective: 1000px; /* Dá a profundidade 3D */
+    cursor: pointer;
+}
+
+/* O Container Interno (que gira) */
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Efeito suave */
+    transform-style: preserve-3d;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
     border-radius: 15px;
+}
+
+/* Ao passar o mouse no container principal, gira o interno */
+.flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+}
+
+/* Estilos Comuns Frente e Verso */
+.flip-card-front, .flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden; /* Safari */
+    backface-visibility: hidden;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     padding: 30px;
-    text-align: left;
-    box-shadow: 0 5px 20px rgba(74, 59, 59, 0.05);
-    transition: transform 0.3s;
-    border: 1px solid transparent;
 }
 
-.pet-item:hover {
-    transform: translateY(-10px);
-    border-color: var(--accent-secondary);
+/* --- FRENTE (Estilo Clean) --- */
+.flip-card-front {
+    background-color: white;
+    color: var(--black);
+    border: 1px solid rgba(0,0,0,0.05);
 }
 
-.card-header i {
-    font-size: 2.5rem;
-    color: var(--accent);
-    margin-bottom: 20px;
+.icon-front {
+    font-size: 3.5rem;
+    color: var(--accent-secondary); /* Rosa antigo */
+    margin-bottom: 25px;
 }
 
-.pet-info h3 {
+.flip-card-front h3 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    font-weight: 700;
+}
+
+.see-more {
+    font-size: 0.8rem;
+    color: var(--text-gray);
+    margin-top: auto; /* Empurra para baixo */
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    opacity: 0.7;
+}
+
+/* --- VERSO (Estilo Destaque) --- */
+.flip-card-back {
+    background-color: var(--accent); /* Cor Marsala */
+    color: white;
+    transform: rotateY(180deg); /* Já começa virado */
+    box-shadow: 0 15px 35px rgba(166, 92, 101, 0.4);
+}
+
+.flip-card-back h3 {
     font-size: 1.3rem;
     margin-bottom: 15px;
+    border-bottom: 1px solid rgba(255,255,255,0.3);
+    padding-bottom: 10px;
 }
 
-.pet-description {
-    color: var(--text-gray);
+.flip-card-back p {
     font-size: 0.95rem;
     line-height: 1.6;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
+    color: rgba(255,255,255,0.9);
 }
 
-.pet-tags span {
-    background: var(--accent-light);
+.btn-card {
+    background-color: white;
     color: var(--accent);
-    padding: 4px 12px;
-    border-radius: 50px;
+    padding: 10px 25px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 800;
+    text-transform: uppercase;
     font-size: 0.8rem;
-    font-weight: 700;
-    margin-right: 5px;
+    transition: transform 0.2s;
+}
+
+.btn-card:hover {
+    transform: scale(1.05);
+    background-color: var(--bg-hero);
 }
 
 /* --- Locais / Processo --- */
@@ -417,538 +647,11 @@ nav {
     line-height: 1.6;
 }
 
-/* --- Footer --- */
-footer {
-    background-color: var(--black); /* Agora é Marrom Escuro */
-    color: white;
-    padding: 60px 5% 20px;
-}
-
-.footer-container {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 40px;
-    border-bottom: 1px solid rgba(255,255,255,0.1);
-    padding-bottom: 40px;
-}
-
-.footer-brand h1 {
-    font-size: 1.8rem;
-}
-
-.accent {
-    color: #D2838C; /* Rosado claro para contraste no escuro */
-}
-
-.social a {
-    color: white;
-    font-size: 1.5rem;
-    margin-right: 15px;
-    transition: color 0.3s;
-}
-
-.social a:hover {
-    color: #D2838C;
-}
-
-.contato-info-item {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 10px;
-    color: #E0C0C4;
-}
-
-.links a {
-    display: block;
-    color: #E0C0C4;
-    text-decoration: none;
-    margin-bottom: 10px;
-    transition: color 0.3s;
-}
-
-.links a:hover {
-    color: white;
-}
-
-.copyright {
-    text-align: center;
-    margin-top: 20px;
-    color: #a89496;
-    font-size: 0.9rem;
-}
-
-/* --- Floating WhatsApp --- */
-.floating-whatsapp {
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    width: 60px;
-    height: 60px;
-    background-color: #25D366; /* Mantido verde para reconhecimento, ou mude para var(--accent) */
-    color: white;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 30px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-    z-index: 1000;
-    text-decoration: none;
-    transition: transform 0.3s;
-}
-
-.floating-whatsapp:hover {
-    transform: scale(1.1);
-}
-
-/* --- Responsividade Mobile --- */
-@media (max-width: 768px) {
-    .heropage {
-        flex-direction: column;
-        text-align: center;
-        padding-top: 120px;
-    }
-    
-    .hero-headlines-buttons {
-        justify-content: center;
-    }
-
-    .hero-headlines h1 {
-        font-size: 2.2rem;
-    }
-
-    .sobre {
-        flex-direction: column;
-    }
-    
-    .img-sobre {
-        width: 100%;
-    }
-
-    .menu {
-        display: none;
-        position: fixed;
-        top: 0;
-        right: 0;
-        height: 100vh;
-        width: 70%;
-        background: var(--bg-hero);
-        flex-direction: column;
-        padding: 80px 30px;
-        box-shadow: -5px 0 15px rgba(0,0,0,0.1);
-    }
-
-    .menu.active {
-        display: flex;
-    }
-
-    .btn, .close-btn {
-        display: block;
-    }
-    
-    .btn-2 {
-        display: none;
-    }
-}
-
-/* --- Seção Mindfulness (Modo Automático) --- */
-.mindfulness-section {
-    width: 100%;
-    min-height: 600px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    /* Gradiente suave Bege/Branco */
-    background: linear-gradient(135deg, #F9F4EF 0%, #FFFFFF 100%);
-    transition: background 0.8s ease;
-    position: relative;
-    overflow: hidden;
-}
-
-/* Estado "Desligado" (Fundo Rosa Acolhedor) */
-.mindfulness-section.calm-mode {
-    background: #E6D0D4; /* Rosa antigo suave */
-}
-
-.mindfulness-content {
-    max-width: 600px;
-    padding: 20px;
-    z-index: 2;
-}
-
-.mind-title {
-    font-size: 2.5rem;
-    font-weight: 900;
-    color: var(--black);
-    margin-bottom: 10px;
-    transition: color 0.5s;
-}
-
-.mind-subtitle {
-    font-size: 1.2rem;
-    color: var(--text-gray);
-    margin-bottom: 40px;
-}
-
-/* --- Estilo do Interruptor (Switch) --- */
-.switch-wrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-    margin: 0 auto 30px;
-}
-
-.toggle-switch {
-    width: 120px;
-    height: 180px;
-    background-color: #fff;
-    border: 4px solid var(--black); /* Borda Marrom */
-    border-radius: 10px;
-    position: relative;
-    cursor: pointer;
-    box-shadow: 10px 10px 0px rgba(74, 59, 59, 0.1);
-    transition: all 0.3s ease;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.toggle-switch:active {
-    transform: scale(0.98);
-}
-
-/* A Alavanca */
-.switch-lever {
-    width: 60px;
-    height: 100px;
-    background-color: #fff;
-    border: 4px solid var(--black);
-    position: relative;
-    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
-    top: -20px; 
-    box-shadow: 0 5px 0 #eee;
-}
-
-/* Estado da alavanca quando "OFF" (Baixo) */
-.toggle-switch.switched-off .switch-lever {
-    top: 20px; 
-    background-color: #D2838C; /* Rosa interno */
-    box-shadow: 0 -5px 0 #A65C65;
-}
-
-.switch-labels {
-    font-weight: 800;
-    font-size: 1.2rem;
-    color: var(--black);
-    letter-spacing: 2px;
-}
-
-/* --- Textos de Status --- */
-#switch-status-text {
-    font-size: 1.5rem;
-    font-weight: 800;
-    margin-bottom: 20px;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    color: var(--accent);
-}
-
-/* --- Mensagem Escondida --- */
-.hidden-message {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: all 0.6s ease;
-    pointer-events: none;
-    background: rgba(255, 255, 255, 0.7);
-    padding: 20px;
-    border-radius: 15px;
-    backdrop-filter: blur(5px);
-}
-
-.hidden-message.visible {
-    opacity: 1;
-    transform: translateY(0);
-    pointer-events: all;
-}
-
-.hidden-message p {
-    font-size: 1.3rem;
-    color: var(--accent);
-    font-weight: 600;
-    margin-bottom: 10px;
-    line-height: 1.6;
-}
-
-.btn-mindfulness {
-    display: inline-block;
-    margin-top: 15px;
-    padding: 12px 30px;
-    background-color: var(--accent);
-    color: white;
-    text-decoration: none;
-    border-radius: 50px;
-    font-weight: bold;
-    transition: transform 0.2s;
-}
-
-.btn-mindfulness:hover {
-    transform: scale(1.05);
-    background-color: var(--accent-secondary);
-}
-
-.insta-link {
-    display: inline-block;
-    margin-top: 20px;
-    font-weight: 700;
-    color: var(--accent);
-    text-decoration: none;
-    font-size: 1.1rem;
-    transition: opacity 0.3s;
-}
-
-.insta-link:hover {
-    opacity: 0.8;
-    text-decoration: underline;
-}
-
 /* =========================================
-   SEÇÃO: O QUE A TERAPIA NÃO É (Bege/Creme)
+   SEÇÃO: O QUE A TERAPIA NÃO É
    ========================================= */
 .terapia-nao-e {
-    background-color: var(--bg-hero); /* Bege Fundo */
-    padding: 100px 5%;
-    text-align: center;
-    position: relative;
-}
-
-.terapia-nao-e h2 {
-    font-size: 3rem;
-    color: var(--accent-secondary); /* Rosa antigo */
-    font-family: "Nunito Sans", sans-serif;
-    margin-bottom: 60px;
-    position: relative;
-    display: inline-block;
-}
-
-.terapia-nao-e h2 .cursive {
-    font-family: 'Dancing Script', cursive; 
-    font-weight: 400;
-    font-size: 3.5rem;
-    color: var(--accent); /* Marsala */
-}
-
-.icon-brain {
-    font-size: 4rem;
-    color: var(--accent-secondary);
-    margin-bottom: 20px;
-    animation: pulse 2s infinite;
-}
-
-@keyframes pulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.1); }
-    100% { transform: scale(1); }
-}
-
-.cards-nao-e {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 30px;
-    max-width: 900px;
-    margin: 0 auto;
-}
-
-.card-item {
-    background: transparent;
-    padding: 15px 25px;
-    position: relative;
-    color: var(--black); /* Marrom */
-    font-weight: 600;
-    font-size: 1.1rem;
-}
-
-/* Setas desenhadas */
-.card-item .arrow {
-    display: block;
-    font-size: 2rem;
-    color: #E0B0B6;
-    margin-bottom: 10px;
-    font-family: cursive;
-}
-
-.terapia-sim-e {
-    margin-top: 60px;
-    font-size: 1.3rem;
-    color: var(--black);
-}
-
-/* =========================================
-   PÁGINA SOBRE (Vinho/Marsala)
-   ========================================= */
-.page-sobre {
-    background-color: #FCF3F3; /* Rosado bem claro */
-}
-
-/* Header da Página Sobre */
-.sobre-header {
-    background: linear-gradient(135deg, #D2838C 0%, #A65C65 100%); /* Gradiente Marsala */
-    color: white;
-    padding: 140px 5% 80px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 60px;
-    position: relative;
-    overflow: hidden;
-}
-
-.sobre-header::before {
-    content: '';
-    position: absolute;
-    top: -50px;
-    right: -50px;
-    width: 300px;
-    height: 300px;
-    border: 2px solid rgba(255,255,255,0.3);
-    border-radius: 50%;
-}
-
-.sobre-header-content {
-    max-width: 500px;
-    z-index: 2;
-}
-
-.sobre-header-content h4 {
-    font-size: 1rem;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    opacity: 0.9;
-    margin-bottom: 10px;
-}
-
-.sobre-header-content h1 {
-    font-size: 4rem;
-    font-weight: 900;
-    line-height: 0.9;
-    margin-bottom: 20px;
-}
-
-.sobre-header-content p {
-    font-size: 1.1rem;
-    line-height: 1.6;
-    opacity: 0.9;
-    border-left: 3px solid rgba(255,255,255,0.5);
-    padding-left: 15px;
-}
-
-.sobre-header-img img {
-    width: 300px;
-    height: 350px;
-    object-fit: cover;
-    border: 8px solid rgba(255,255,255,0.2);
-    border-radius: 5px;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
-    transform: rotate(3deg);
-}
-
-/* Timeline Acadêmica */
-.formacao-academica {
-    padding: 80px 5%;
-    max-width: 900px;
-    margin: 0 auto;
-}
-
-.formacao-academica h2 {
-    text-align: center;
-    color: var(--accent); /* Marsala */
-    font-size: 2.2rem;
-    margin-bottom: 50px;
-}
-
-.timeline {
-    position: relative;
-    border-left: 3px solid #E0C0C4;
-    padding-left: 30px;
-}
-
-.timeline-item {
-    margin-bottom: 40px;
-    position: relative;
-}
-
-.timeline-item::before {
-    content: '';
-    position: absolute;
-    left: -39px; 
-    top: 0;
-    width: 15px;
-    height: 15px;
-    background-color: var(--accent);
-    border-radius: 50%;
-    border: 3px solid #fff;
-}
-
-.timeline-item .year {
-    font-weight: 800;
-    color: var(--accent);
-    margin-bottom: 5px;
-}
-
-.timeline-item h3 {
-    font-size: 1.4rem;
-    color: var(--black);
-    margin-bottom: 5px;
-}
-
-.timeline-item .thesis {
-    font-style: italic;
-    color: var(--text-gray);
-    margin-top: 5px;
-    font-size: 0.95rem;
-    background: #fff;
-    padding: 10px;
-    border-left: 3px solid var(--accent);
-    display: inline-block;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-}
-
-.tag {
-    background-color: #E0C0C4;
-    color: var(--accent);
-    padding: 3px 10px;
-    border-radius: 15px;
-    font-size: 0.8rem;
-    font-weight: 700;
-}
-
-@media (max-width: 768px) {
-    .sobre-header {
-        flex-direction: column;
-        text-align: center;
-        padding-top: 100px;
-    }
-    
-    .sobre-header-content p {
-        border-left: none;
-        border-top: 3px solid rgba(255,255,255,0.5);
-        padding-top: 15px;
-    }
-    
-    .sobre-header-img img {
-        width: 100%;
-        max-width: 300px;
-        transform: rotate(0);
-    }
-}
-/* =========================================
-   SEÇÃO HOME: "TERAPIA NÃO É..." (Estilo Imagem 1)
-   ========================================= */
-.terapia-nao-e {
-    background-color: #F9F6F2; /* Bege suave */
+    background-color: #F9F6F2;
     padding: 100px 5%;
     text-align: center;
     overflow: hidden;
@@ -965,21 +668,19 @@ footer {
 .cursive-text {
     font-family: 'Dancing Script', cursive;
     font-size: 4.5rem;
-    color: #C57D85; /* Tom rosado */
+    color: #C57D85;
     display: block;
     transform: rotate(-3deg);
 }
 
-/* Container do "Mapa Mental" */
 .mind-map-container {
     position: relative;
     width: 100%;
     max-width: 600px;
-    height: 500px; /* Altura fixa para posicionamento */
+    height: 500px;
     margin: 0 auto;
 }
 
-/* Cérebro no Centro */
 .center-brain {
     position: absolute;
     top: 50%;
@@ -988,7 +689,7 @@ footer {
     font-size: 5rem;
     color: #EF9A9A;
     z-index: 2;
-    background: #F9F6F2; /* Para cobrir as linhas atrás */
+    background: #F9F6F2;
     padding: 20px;
     border-radius: 50%;
 }
@@ -1003,7 +704,6 @@ footer {
     100% { transform: scale(1); }
 }
 
-/* Itens ao redor */
 .map-item {
     position: absolute;
     width: 140px;
@@ -1017,14 +717,12 @@ footer {
     margin-bottom: 5px;
 }
 
-/* Posicionamento dos itens */
 .item-top-left { top: 10%; left: 10%; }
 .item-top-center { top: 5%; left: 50%; transform: translateX(-50%); }
 .item-top-right { top: 10%; right: 10%; }
 .item-bottom-left { bottom: 15%; left: 10%; }
 .item-bottom-right { bottom: 15%; right: 10%; }
 
-/* Setas SVG */
 .arrow-svg {
     width: 60px;
     height: 60px;
@@ -1033,9 +731,8 @@ footer {
     opacity: 0.6;
 }
 
-/* Ajuste de rotação das setas para apontar para o centro */
 .item-top-left .arrow-svg { transform: rotate(120deg); }
-.item-top-right .arrow-svg { transform: rotate(180deg) scaleY(-1); } /* Espelhado */
+.item-top-right .arrow-svg { transform: rotate(180deg) scaleY(-1); }
 .item-bottom-left .arrow-svg { transform: rotate(30deg); }
 .item-bottom-right .arrow-svg { transform: rotate(-30deg); }
 
@@ -1043,10 +740,9 @@ footer {
     font-size: 2rem;
     color: #E5989B;
     display: block;
-    transform: rotate(180deg); /* Seta para baixo apontando pro cérebro */
+    transform: rotate(180deg);
 }
 
-/* Responsividade do Mapa Mental */
 @media (max-width: 768px) {
     .mind-map-container {
         height: auto;
@@ -1059,20 +755,19 @@ footer {
         position: static;
         transform: none;
     }
-    .arrow-svg, .arrow-char { display: none; } /* Esconde setas no mobile para limpar */
-    .center-brain { order: -1; margin-bottom: 30px; } /* Cérebro primeiro */
+    .arrow-svg, .arrow-char { display: none; }
+    .center-brain { order: -1; margin-bottom: 30px; }
 }
 
-
 /* =========================================
-   PÁGINA SOBRE (Estilo Marsala/Vinho - Imagem 2)
+   PÁGINA SOBRE
    ========================================= */
 .page-sobre {
     background-color: #FCF3F3;
 }
 
 .nav-sobre {
-    background-color: #9A4E56; /* Marsala */
+    background-color: #9A4E56;
     padding: 15px 5%;
     display: flex;
     justify-content: space-between;
@@ -1082,9 +777,8 @@ footer {
 .brand-white h1, .brand-white .crp { color: white; text-decoration: none; }
 .btn-voltar { color: white; text-decoration: none; border: 1px solid #fff; padding: 5px 15px; border-radius: 20px; }
 
-/* Header Sobre */
 .sobre-header {
-    background: linear-gradient(135deg, #C06C75 0%, #9A4E56 100%); /* Gradiente Marsala */
+    background: linear-gradient(135deg, #C06C75 0%, #9A4E56 100%);
     min-height: 600px;
     display: flex;
     align-items: center;
@@ -1095,7 +789,6 @@ footer {
     position: relative;
 }
 
-/* Elemento decorativo de fundo (Onda) */
 .sobre-header::after {
     content: '';
     position: absolute;
@@ -1113,7 +806,7 @@ footer {
 }
 
 .marsala-title {
-    font-family: "Didot", serif; /* Fonte clássica/serifada */
+    font-family: "Didot", serif;
     font-size: 4.5rem;
     font-weight: 700;
     line-height: 0.9;
@@ -1154,7 +847,6 @@ footer {
     display: block;
 }
 
-/* Seção Formação Acadêmica */
 .formacao-academica {
     padding: 80px 5%;
     max-width: 900px;
@@ -1172,7 +864,6 @@ footer {
     font-size: 2.5rem;
 }
 
-/* Timeline Vertical */
 .timeline {
     position: relative;
     border-left: 2px solid #E0C0C4;
@@ -1246,7 +937,6 @@ footer {
     padding: 20px;
 }
 
-/* Responsividade */
 @media (max-width: 768px) {
     .sobre-header {
         flex-direction: column;
@@ -1267,5 +957,163 @@ footer {
 
     .marsala-title {
         font-size: 3.5rem;
+    }
+}
+
+/* --- Footer --- */
+footer {
+    background-color: var(--black);
+    color: white;
+    padding: 60px 5% 20px;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 40px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    padding-bottom: 40px;
+}
+
+.footer-brand h1 {
+    font-size: 1.8rem;
+}
+
+.accent {
+    color: #D2838C;
+}
+
+.social a {
+    color: white;
+    font-size: 1.5rem;
+    margin-right: 15px;
+    transition: color 0.3s;
+}
+
+.social a:hover {
+    color: #D2838C;
+}
+
+.contato-info-item {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+    color: #E0C0C4;
+}
+
+.links a {
+    display: block;
+    color: #E0C0C4;
+    text-decoration: none;
+    margin-bottom: 10px;
+    transition: color 0.3s;
+}
+
+.links a:hover {
+    color: white;
+}
+
+.copyright {
+    text-align: center;
+    margin-top: 20px;
+    color: #a89496;
+    font-size: 0.9rem;
+}
+
+/* --- Floating WhatsApp --- */
+.floating-whatsapp {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    background-color: #25D366;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    z-index: 1000;
+    text-decoration: none;
+    transition: transform 0.3s;
+}
+
+.floating-whatsapp:hover {
+    transform: scale(1.1);
+}
+
+/* --- Responsividade Mobile (Geral & Menu Drawer) --- */
+@media (max-width: 768px) {
+    .heropage {
+        flex-direction: column;
+        text-align: center;
+        padding-top: 120px;
+    }
+    
+    .hero-headlines-buttons {
+        justify-content: center;
+    }
+
+    .hero-headlines h1 {
+        font-size: 2.2rem;
+    }
+
+    .sobre {
+        flex-direction: column;
+    }
+    
+    .img-sobre {
+        width: 100%;
+    }
+
+    /* Menu Estilo Gaveta */
+    .menu {
+        display: none; /* Esconde o flex normal */
+        position: fixed;
+        top: 0;
+        right: 0;
+        height: 100vh;
+        width: 70%;
+        background: var(--bg-hero);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 30px;
+        padding: 80px 30px;
+        box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+        z-index: 1000;
+    }
+
+    .menu.active {
+        display: flex;
+    }
+
+    .btn-agendar {
+        display: none; /* Esconde botão desktop */
+    }
+
+    /* Botões de controle do menu */
+    .btn, .close-btn {
+        display: block;
+        font-size: 1.5rem;
+        color: var(--accent);
+    }
+    
+    .menu-btn {
+        display: block;
+        color: var(--accent);
+        font-size: 1.5rem;
+    }
+
+    .mobile-cta {
+        display: inline-block;
+        margin-top: 20px;
+        padding: 12px 30px;
+        background: var(--accent);
+        color: white !important;
+        border-radius: 30px;
     }
 }
