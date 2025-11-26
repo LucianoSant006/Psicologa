@@ -18,61 +18,26 @@ menuLinks.forEach(link => {
     });
 });
 
-// NAVBAR STICKY
+// NAVBAR STICKY (Fundo do menu aparece ao rolar)
 const navbar = document.querySelector("nav");
 window.addEventListener("scroll", () => {
     if(navbar) navbar.classList.toggle("sticky", window.scrollY > 0);
 });
 
-// SMOOTH SCROLL (Lenis)
-const lenis = new Lenis();
-function raf(time) {
-    lenis.raf(time);
-    requestAnimationFrame(raf);
-}
-requestAnimationFrame(raf);
+// --- REMOVIDO: SMOOTH SCROLL (Lenis) ---
+// --- REMOVIDO: SCROLL REVEAL (Animações/Zoom) ---
+// --- REMOVIDO: GSAP (Animação de Texto) ---
 
-// SCROLL REVEAL ANIMATIONS
-const sr = ScrollReveal({
-    origin: "bottom",
-    distance: "30px",
-    duration: 800,
-    delay: 150,
-    easing: "ease-in-out",
-    reset: false
-});
-
-sr.reveal(".hero-headlines h1");
-sr.reveal(".hero-headlines p", { delay: 200 });
-sr.reveal(".hero-headlines-buttons", { delay: 300 });
-sr.reveal(".hero-main-img", { origin: "right", delay: 400 });
-sr.reveal(".img-sobre", { origin: "left" });
-sr.reveal(".sobre-headlines", { origin: "right" });
-sr.reveal(".flip-card", { interval: 150 }); 
-sr.reveal(".rifa-card", { interval: 150 });
-sr.reveal(".testimunhas-item", { interval: 150 });
-
-// GSAP TEXT REVEAL
-const splitTypes = document.querySelectorAll(".reveal-type");
-splitTypes.forEach((char) => {
-    const text = new SplitType(char, { type: "chars" });
-    gsap.fromTo(
-        text.chars,
-        { opacity: 0, y: 20 },
-        { opacity: 1, y: 0, duration: 0.5, stagger: 0.03, scrollTrigger: char }
-    );
-});
-
-// --- NOVO: HIGHLIGHT MENU ATIVO (SCROLLSPY) ---
+// HIGHLIGHT MENU ATIVO (SCROLLSPY)
 // Destaca o link do menu correspondente à seção visível
-const sections = document.querySelectorAll("section[id]"); // Seleciona seções com ID
+const sections = document.querySelectorAll("section[id]"); 
 
 window.addEventListener("scroll", () => {
     let scrollY = window.pageYOffset;
     
     sections.forEach(current => {
         const sectionHeight = current.offsetHeight;
-        const sectionTop = current.offsetTop - 150; // Ajuste para o header fixo
+        const sectionTop = current.offsetTop - 150; 
         const sectionId = current.getAttribute("id");
         const menuLink = document.querySelector(`.menu a[href*=${sectionId}]`);
 
@@ -86,12 +51,11 @@ window.addEventListener("scroll", () => {
     });
 });
 
-// --- NOVO: FLIP CARD NO MOBILE (CLIQUE) ---
-// Em celulares, clicar vira o card (melhor que hover)
+// FLIP CARD NO MOBILE (CLIQUE)
 const cards = document.querySelectorAll('.flip-card');
 cards.forEach(card => {
     card.addEventListener('click', () => {
-        // Remove a classe de outros cards (para fechar um ao abrir outro)
+        // Remove a classe de outros cards
         cards.forEach(c => {
             if(c !== card) c.querySelector('.flip-card-inner').classList.remove('flipped-mobile');
         });
